@@ -1,0 +1,7 @@
+#!/bin/bash
+rm -f hexaTB.x
+rm -f libtbdiag.a
+make clean
+make hexaTB.x
+./hexaTB.x
+#./hexaTB.x > hexaTB.stdout

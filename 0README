@@ -1,0 +1,41 @@
+This is the public release of hexaTB, a Fortran program for
+diagonalizing the tight-binding Hamiltonian of any two-dimensional
+hexagonal crystal. The code computes the band structure along the
+Gamma-K-M-Gamma path as well as on a 2D grid spanning the full
+Brillouin zone. The Hamiltonian must be specified in the module
+fun_mod found in file fun_mod.f90 and an example is provide for
+demonstration. The code can be compiled with OpenMP support for
+shared memory paralellization over the set of k-vectors, which
+speeds up the computation considerably on multicore machines.
+File I/O is not parallelized, which adds some overhead if the
+grid of k-points is dense.
+
+Compilation:
+
+1) edit the settings_mod module in settings_mod.f90 to suit your needs
+2) edit the fun_mod module in fun_mod.f90 to use your own model
+3) edit the Makefile to suit your system and to switch on/off OpenMP
+4) make hexaTB.x
+
+For a simple test, skip steps 1) and 2) above to use the provided example.
+Takes less than 1 minute to run on a quad-core CPU with the default settings.
+
+List of files:
+
+0README: This file
+COPYING: GNU GPL document
+Makefile: Makefile used for compilation
+diag.f90: Main source file
+dtype_mod.f90: Module file setting numerical precision
+fun_mod.f90: Module file containing the tight-binding model
+settings_mod.f90: Module file containing settings of the code
+bandstruct_GKMG_ref.dat: Reference output along the GKMG path
+compile.script: Bash script for quick compilation
+
+Version history:
+
+1.0 (April 2019):
+
+First public release. Includes as an example the Hamiltonian of
+the bilayer graphene tight-binding model published in
+E. McCann and M. Koshino, Rep. Prog. Phys. 76, 056503 (2013)
